@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+let baseURL = ''
+
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost:3003'
+} else {
+  baseURL = 'your heroku backend url here'
 }
 
-export default App;
+class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      artists : []
+    }
+  }
+
+  getArtists() {
+    //Request to Spotify will go here to populate state.artists
+  }
+
+  render() {
+    return(
+      <h1>Not Spotify</h1>
+    )
+  }
+}
+
+export default App
