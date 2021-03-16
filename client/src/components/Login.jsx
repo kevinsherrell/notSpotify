@@ -13,12 +13,16 @@ const spotifyUrl = ('https://accounts.spotify.com/authorize' +
 
 class Login extends Component {
     render() {
-        <div>
-            <h1>Login to Spotify</h1>
-            <WindowOpener
-                url={spotifyUrl}
-            />
-        </div>
+        return(
+            <div>
+                <h1>Login to Spotify</h1>
+                <WindowOpener
+                    url={spotifyUrl}
+                >
+                    Login
+                </WindowOpener>
+            </div>
+        )
     }
 }
 

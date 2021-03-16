@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import qs from 'qs';
+import { useLocation } from 'react-router';
 
 class LoginCallback extends Component {
     componentDidMount() {
         const OauthCode = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).code
         
-        fetch('http://localhost:3003/giveCode', {
-            method: 'POST',
-            body: JSON.stringify({ code: OauthCode}),
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
+        fetch('http://localhost:3003/getToken/' + OauthCode)
             .then(res => res.json())
             .then(resJson => {
                 console.log(resJson)
@@ -21,7 +16,7 @@ class LoginCallback extends Component {
     }
     render() {
         return(
-            <div>Redirecting you to the Application!</div>
+            <div>test </div>
         )
     }
 }

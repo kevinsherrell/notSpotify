@@ -1,14 +1,14 @@
 const express =require('express');
 const app = express();
 const axios = require('axios'); //For Fetch Requests from the Spotify API
-const port = 3003 // this will be moved to environment variable
+const port = 3003; // this will be moved to environment variable
 const morgan = require('morgan');
 const cors = require('cors');
 
 //Vars
-const redirect_uri = 'http://localhost:3000/loginCallback' //Need an if else statement for heroku
-const my_client_id = '39c7c593c7fc4e51873b1705c7c9a6b7' //This and secret need to be in env
-const my_client_secret = '84a861c066ec4ae4b9e6ee7b4ec3d960'
+const redirect_uri = 'http://localhost:3000/loginCallback'; //Need an if else statement for heroku
+const my_client_id = '39c7c593c7fc4e51873b1705c7c9a6b7'; //This and secret need to be in env
+const my_client_secret = '84a861c066ec4ae4b9e6ee7b4ec3d960';
 let OAuthToken = '';
 let mainOauthCode = '';
 let refreshToken = '';
@@ -32,8 +32,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.post('/getToken', (req, res) => {
-    mainOauthCode = req.body.code;
+app.get('/getToken/:code', (req, res) => {
+    mainOauthCode = req.params.code;
     const data = my_client_id + ':' + my_client_secret //https://stackabuse.com/encoding-and-decoding-base64-strings-in-node-js/
     let buff = new Buffer(data);
     let base64data = buff.toString('base64');
@@ -56,8 +56,14 @@ app.post('/getToken', (req, res) => {
         OAuthToken = res.data.access_token;
         refreshToken = res.data.refres_token;
     })
-    .then(() => console.log(OAuthToken))
-    .catch(err => console.log(err));
+    .then(() => {
+        console.log(OAuthToken);
+        res.json({codeRecieved: true});
+    })
+    .catch(err => {
+        console.log(err);
+        res.json({codeRecieved: false});
+    });
 }) // End of app.post
 
 app.listen(port, ()=>console.log(`server is listening on port ${port}`));
