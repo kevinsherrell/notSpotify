@@ -7,9 +7,7 @@ class LoginCallback extends Component {
         const OauthCode = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).code
         
         fetch('http://localhost:3003/getToken/' + OauthCode)
-            .then(res => res.json())
-            .then(resJson => {
-                console.log(resJson)
+            .then(() => {
                 window.close();
             })
             .catch(err => console.log({'Error': err}));
