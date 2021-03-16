@@ -32,6 +32,11 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.get('/getOAuth', (req, res) => {
+   
+    res.status(200).json(OAuthToken)
+})
+
 app.get('/getToken/:code', (req, res) => {
     mainOauthCode = req.params.code;
     const data = my_client_id + ':' + my_client_secret //https://stackabuse.com/encoding-and-decoding-base64-strings-in-node-js/
