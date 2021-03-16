@@ -1,7 +1,7 @@
 const express =require('express');
 const app = express();
 const axios = require('axios'); //For Fetch Requests from the Spotify API
-const port = 3000 // this will be moved to environment variable
+const port = 3003 // this will be moved to environment variable
 const morgan = require('morgan');
 const cors = require('cors');
 
@@ -32,7 +32,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.post('/giveCode', (req, res) => {
+app.post('/getToken', (req, res) => {
     mainOauthCode = req.body.code;
     const data = my_client_id + ':' + my_client_secret //https://stackabuse.com/encoding-and-decoding-base64-strings-in-node-js/
     let buff = new Buffer(data);
