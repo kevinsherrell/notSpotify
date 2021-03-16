@@ -6,7 +6,11 @@ class App extends Component {
   render() {
     return(
       <Router>
-
+        <Switch>
+          <Route path='/login'>
+            <Login />
+          </Route>
+        </Switch>
       </Router>
     )
   }
