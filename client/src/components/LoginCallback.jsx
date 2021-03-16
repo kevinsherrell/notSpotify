@@ -25,3 +25,5 @@ class LoginCallback extends Component {
         )
     }
 }
+
+export default LoginCallback;
