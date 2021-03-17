@@ -1,9 +1,9 @@
 const express = require('express')
-const FAVORITES = express.Router()
-const Favorite = require('../models/favorites')
+const profileRouter = express.Router();
+const Profile = require('/models/profile');
 
-FAVORITES.get('/', (req, res)=> {
-    Favorite.find({}, (err, foundFavorites)=> {
+profileRouter.get('/', (req, res)=> {
+    Profile.find({}, (err, foundFavorites)=> {
         if(err) {
             res.status(400).json({error : error.message})
         }
@@ -11,8 +11,8 @@ FAVORITES.get('/', (req, res)=> {
     })
 })
 
-FAVORITES.post('/' , (req, res) => {
-    Favorite.create(req.body, (err, createdFavorite) => {
+profileRouter.post('/' , (req, res) => {
+    Profile.create(req.body, (err, createdFavorite) => {
         if (err) {
             res.status(400).json({error: err.message})
         }
@@ -20,8 +20,8 @@ FAVORITES.post('/' , (req, res) => {
     })
 })
 
-FAVORITES.delete('/:id', (req, res)=> {
-    Favorite.findByIdAndRemove(req.params.id, (err, deletedFavorite) => {
+profileRouter.delete('/:id', (req, res)=> {
+    Profile.findByIdAndRemove(req.params.id, (err, deletedFavorite) => {
         if(err) {
             res.status(400).json({error: err.message})
         }
@@ -29,8 +29,8 @@ FAVORITES.delete('/:id', (req, res)=> {
     })
 })
 
-FAVORITES.put('/:id', (req,res)=> {
-    Favorite.findByIdAndUpdate(req.params.id, req.body, {new : true}, (err, updatedFavorite) => {
+profileRouter.put('/:id', (req,res)=> {
+    Profile.findByIdAndUpdate(req.params.id, req.body, {new : true}, (err, updatedFavorite) => {
         if(err) {
             res.status(400).json({error : err.message})
         }
@@ -41,4 +41,4 @@ FAVORITES.put('/:id', (req,res)=> {
 
 
 
-module.exports = FAVORITES
+module.exports = profileRouter;
