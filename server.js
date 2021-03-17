@@ -17,6 +17,10 @@ let refreshToken = '';
 app.use(morgan('dev')); // Morgan is for server logging
 
 // mongoose connection
+mongoose.connect(`mongodb://localhost:27017/favorites`, { useNewUrlParser : true })
+mongoose.connection.once('open', ()=> {
+    console.log('connected to mongoose')
+})
 
 //Cors
 const whitelist = ['http://localhost:3000']

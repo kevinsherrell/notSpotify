@@ -42,6 +42,11 @@ class Home extends Component {
         .then(parsedData => this.setState({artists : parsedData.artists.items}))
     }
 
+    //this function will be triggered with onClick
+    addFavorite() {
+        fetch(baseURL + '')
+    }
+
     render() {
         return (
             <div>Hello</div>
