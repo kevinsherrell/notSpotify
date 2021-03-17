@@ -8,6 +8,9 @@ if (process.env.NODE_ENV === 'development') {
     baseURL = 'your heroku backend url here'
   }
 
+const likedArtists = []; //Placeholders, eventually to be replaced by backend
+const recommendedArtists = [];
+
 class Home extends Component {
     constructor(props){
     super(props)
@@ -43,7 +46,14 @@ class Home extends Component {
 
     render() {
         return (
-            <div>Hello</div>
+            <div className='artistsPage'>
+                <Navbar currentPage='favoriteArtists'/>
+                <div className='likedAndRecommended'>
+                    <Liked likedArtists={ likedArtists }/>
+                    <Recommended recommendedArtists = { recommendedArtists }/>
+                </div>
+                
+            </div>
         )
     }
 }
