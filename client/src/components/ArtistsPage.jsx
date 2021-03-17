@@ -10,33 +10,42 @@ const recommendedArtists = [];
 //Props Needed:
 class ArtistsPage extends Component {
     state = {
-        token: ''
+        token: '',
+        userId: '',
+        userObject: {},
     }
     componentDidMount = () => {
-        this.getToken();
+        this.getToken()
+        .then((token) => {
+            this.setState({
+                token: token,
+            });
+            this.getUserId();
+        });
     }
 
-    getToken = () => {
-        fetch(serverUrl + '/getOAuth')
-            .then(
-                res => res.json()
-            )
-            .then(
-                resJson => {
-                    this.setState({
-                        token: resJson
-                    })
-                    console.log(resJson);
-                }
-            )
+    getToken = async () => {
+        const token = await fetch(serverUrl + '/getOAuth').then(res => res.json());
+        return token
     }
 
     getUserId = () => {
         fetch('https://api.spotify.com/v1/me', {
             headers: {
-                Authorization: 'test'
+                Authorization: 'Bearer ' + this.state.token
             },
-        })
+        }).then(
+            res => res.json()
+        )
+        .then(
+            resJson => {
+                this.setState({
+                    userId: resJson.id,
+                    userObject: resJson,
+                });
+                console.log(this.state.userId);
+            }
+        )
     }
 
     render() {
