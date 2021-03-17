@@ -15,6 +15,7 @@ class Home extends Component {
         oAuth : ''
     }
     this.getOAuth = this.getOAuth.bind(this)
+    this.getSpot = this.getSpot.bind(this)
 }
 
     componentDidMount() {
@@ -24,7 +25,19 @@ class Home extends Component {
     getOAuth() {
         fetch(baseURL + '/getOAuth')
         .then(data => {return data.json()})
-        .then(parsedData => this.setState({oAuth : parsedData}))
+        .then(parsedData => this.setState({oAuth : parsedData}, ()=>{this.getSpot()}))
+    }
+
+    getSpot() {
+        fetch('https://api.spotify.com/v1/artists?ids=7GaxyUddsPok8BuhxN6OUW%0oSGxfWSnnOXhD2fKuz2Gy',{
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.state.oAuth
+            }
+        })
+        .then(data => {return data.json()})
+        .then(parsedData => console.log(parsedData))
     }
 
     render() {
