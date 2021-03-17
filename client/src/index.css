@@ -1,3 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
 body{
   background-color: #181818;
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+nav {
+  margin: 0px;
+  color: #B3B3B3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15%;
+  height: 100vh;
+  text-align: center;
+  background-color: #121212;
+}
+
+.artistsPage{
+  display: flex;
+}
+
+.liked{
+  position: absolute;
+  left: 17%;
+  color: #FFFFFF;
+}
+
+.logo{
+  width:75%;
+}
+.currentPage{
+  color: #FFFFFF;
 }
