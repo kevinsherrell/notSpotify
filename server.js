@@ -22,6 +22,10 @@ mongoose.connection.once('open', ()=> {
     console.log('connected to mongoose')
 })
 
+//controllers
+const favoritesController = require('./controllers/favoritescont.js')
+app.use('/favorites', favoritesController)
+
 //Cors
 const whitelist = ['http://localhost:3000']
 const corsOptions = {
