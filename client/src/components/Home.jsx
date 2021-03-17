@@ -18,6 +18,7 @@ class Home extends Component {
     }
     this.getOAuth = this.getOAuth.bind(this)
     this.getSpot = this.getSpot.bind(this)
+    this.addFavorite = this.addFavorite.bind(this)
 }
 
     componentDidMount() {
@@ -42,14 +43,29 @@ class Home extends Component {
         .then(parsedData => this.setState({artists : parsedData.artists.items}))
     }
 
-    //this function will be triggered with onClick
-    addFavorite() {
-        fetch(baseURL + '')
+    
+    addFavorite(artist) {
+        fetch(baseURL + '/favorites', {
+            method: 'POST',
+            body: JSON.stringify({
+                name: artist.name,
+                image: artist.images[0].url
+            }),
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        })
     }
 
     render() {
         return (
-            <div>Hello</div>
+            <div>
+                {this.state.artists.map(artist => {
+                    return (
+                        <h2 onClick={() => this.addFavorite(artist)}>{artist.name}</h2>
+                    )
+                })}
+            </div>
         )
     }
 }
