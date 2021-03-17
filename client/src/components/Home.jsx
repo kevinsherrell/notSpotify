@@ -13,7 +13,8 @@ class Home extends Component {
     super(props)
     this.state = {
         oAuth : '',
-        artists: []
+        artists: [],
+        favorites: []
     }
     this.getOAuth = this.getOAuth.bind(this)
     this.getSpot = this.getSpot.bind(this)
