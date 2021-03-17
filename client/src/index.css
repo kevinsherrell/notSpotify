@@ -9,7 +9,6 @@ body{
 nav {
   margin: 0px;
   color: #B3B3B3;
-  position: absolute;
   top: 0;
   left: 0;
   width: 15%;
@@ -20,12 +19,17 @@ nav {
 
 .artistsPage{
   display: flex;
+
 }
 
-.liked{
-  position: absolute;
-  left: 17%;
+.emptyLikes {
+  margin-bottom: 250px;
+}
+
+.likedAndRecommended {
+  margin-left: 2%;
   color: #FFFFFF;
+  width: 83%;
 }
 
 .logo{
