@@ -12,7 +12,8 @@ class Home extends Component {
     constructor(props){
     super(props)
     this.state = {
-        oAuth : ''
+        oAuth : '',
+        artists: []
     }
     this.getOAuth = this.getOAuth.bind(this)
     this.getSpot = this.getSpot.bind(this)
@@ -29,7 +30,7 @@ class Home extends Component {
     }
 
     getSpot() {
-        fetch('https://api.spotify.com/v1/artists?ids=7GaxyUddsPok8BuhxN6OUW%0oSGxfWSnnOXhD2fKuz2Gy',{
+        fetch("https://api.spotify.com/v1/search?q=david&type=artist",{
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
@@ -37,7 +38,7 @@ class Home extends Component {
             }
         })
         .then(data => {return data.json()})
-        .then(parsedData => console.log(parsedData))
+        .then(parsedData => this.setState({artists : parsedData.artists.items}))
     }
 
     render() {
