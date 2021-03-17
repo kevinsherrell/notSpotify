@@ -18,6 +18,11 @@ let refreshToken = '';
 app.use(morgan('dev')); // Morgan is for server logging
 
 
+// mongoose connection
+mongoose.connect(`mongodb://localhost:27017/favorites`, { useNewUrlParser : true })
+mongoose.connection.once('open', ()=> {
+    console.log('connected to mongoose')
+})
 
 
 
@@ -35,11 +40,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// mongoose connection
-mongoose.connect(`mongodb://localhost:27017/favorites`, { useNewUrlParser : true })
-mongoose.connection.once('open', ()=> {
-    console.log('connected to mongoose')
-})
 
 //controllers
 const favoritesController = require('./controllers/favoritescont.js')

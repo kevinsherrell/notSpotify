@@ -51,7 +51,7 @@ class Home extends Component {
 
     
     addFavorite(artist) {
-        console.log('click')
+        
         fetch(baseURL + '/favorites', {
             method: 'POST',
             body: JSON.stringify({

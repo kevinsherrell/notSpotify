@@ -5,7 +5,6 @@ const favoriteSchema = mongoose.Schema({
     followers: String,
     genres: [{type:String}], 
     image: String,
-
 })
 
 module.exports = mongoose.model('Favorite', favoriteSchema)

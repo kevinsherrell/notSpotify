@@ -11,7 +11,7 @@ FAVORITES.get('/', (req, res)=> {
     })
 })
 
-FAVORITES.post('/' , async (req, res) => {
+FAVORITES.post('/' , (req, res) => {
     Favorite.create(req.body, (err, createdFavorite) => {
         if (err) {
             res.status(400).json({error: err.message})
