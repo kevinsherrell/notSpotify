@@ -4,6 +4,7 @@ import './App.css';
 import Login from './components/Login';
 import LoginCallback from './components/LoginCallback';
 import Home from './components/Home';
+import TestHome from './components/ArtistsPage';
 
 class App extends Component {
   render() {
@@ -16,6 +17,9 @@ class App extends Component {
           <Route exact path="/loginCallback" render = {(props) => <LoginCallback {...props} redirectUser= {this.redirectUser} />}/>
           <Route path='/home'>
             <Home />
+          </Route>
+          <Route path='/test' >
+            <TestHome />
           </Route>
         </Switch>
       </BrowserRouter>
