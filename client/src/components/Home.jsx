@@ -12,9 +12,11 @@ class Home extends Component {
     constructor(props){
     super(props)
     this.state = {
-        oAuth : ''
+        oAuth : '',
+        artists: []
     }
     this.getOAuth = this.getOAuth.bind(this)
+    this.getSpot = this.getSpot.bind(this)
 }
 
     componentDidMount() {
@@ -24,7 +26,19 @@ class Home extends Component {
     getOAuth() {
         fetch(baseURL + '/getOAuth')
         .then(data => {return data.json()})
-        .then(parsedData => this.setState({oAuth : parsedData}))
+        .then(parsedData => this.setState({oAuth : parsedData}, ()=>{this.getSpot()}))
+    }
+
+    getSpot() {
+        fetch("https://api.spotify.com/v1/search?q=david&type=artist",{
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + this.state.oAuth
+            }
+        })
+        .then(data => {return data.json()})
+        .then(parsedData => this.setState({artists : parsedData.artists.items}))
     }
 
     render() {

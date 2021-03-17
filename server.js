@@ -63,6 +63,7 @@ app.get('/getToken/:code', (req, res) => {
     })
     .then(() => {
         console.log(OAuthToken);
+        console.log('REFRESH TOKEN IS: ' + refreshToken)
         res.json({codeRecieved: true});
     })
     .catch(err => {
