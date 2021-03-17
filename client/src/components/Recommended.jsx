@@ -7,7 +7,7 @@ class Recommended extends Component {
             <div>
                 <div className='recommended'>
                 <h1>Reccomended Artists</h1>
-                <div class='artistBlock'>
+                <div className='artistBlock'>
                     {
                         this.props.recommendedArtists.map( (artist, key) => {
                             return(
