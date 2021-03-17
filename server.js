@@ -4,6 +4,7 @@ const axios = require('axios'); //For Fetch Requests from the Spotify API
 const port = 3003; // this will be moved to environment variable
 const morgan = require('morgan');
 const cors = require('cors');
+const mongoose = require('mongoose')
 
 //Vars
 const redirect_uri = 'http://localhost:3000/loginCallback'; //Need an if else statement for heroku

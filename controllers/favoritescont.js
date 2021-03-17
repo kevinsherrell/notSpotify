@@ -1,6 +1,6 @@
 const express = require('express')
 const FAVORITES = express.Router()
-const Favorite = require('../models/favorites')
+const Favorite = require('../models/favoritesmod')
 
 FAVORITES.get('/', (req, res)=> {
     Favorite.find({}, (err, foundFavorites)=> {
