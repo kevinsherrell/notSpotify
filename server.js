@@ -4,6 +4,7 @@ const axios = require('axios'); //For Fetch Requests from the Spotify API
 const port = 3003; // this will be moved to environment variable
 const morgan = require('morgan');
 const cors = require('cors');
+const mongoose = require('mongoose')
 
 //Vars
 const redirect_uri = 'http://localhost:3000/loginCallback'; //Need an if else statement for heroku
@@ -17,6 +18,14 @@ let refreshToken = '';
 app.use(morgan('dev')); // Morgan is for server logging
 
 // mongoose connection
+mongoose.connect(`mongodb://localhost:27017/favorites`, { useNewUrlParser : true })
+mongoose.connection.once('open', ()=> {
+    console.log('connected to mongoose')
+})
+
+//controllers
+const favoritesController = require('./controllers/favoritescont.js')
+app.use('/favorites', favoritesController)
 
 //Cors
 const whitelist = ['http://localhost:3000']

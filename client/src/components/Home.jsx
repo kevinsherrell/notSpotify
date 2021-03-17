@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Navbar from './Navbar';
+import Liked from './Liked';
+import Recommended from './Recommended';
 
 let baseURL = ''
 
@@ -16,10 +19,12 @@ class Home extends Component {
     super(props)
     this.state = {
         oAuth : '',
-        artists: []
+        artists: [],
+        favorites: []
     }
     this.getOAuth = this.getOAuth.bind(this)
     this.getSpot = this.getSpot.bind(this)
+    this.addFavorite = this.addFavorite.bind(this)
 }
 
     componentDidMount() {
@@ -44,15 +49,37 @@ class Home extends Component {
         .then(parsedData => this.setState({artists : parsedData.artists.items}))
     }
 
+    
+    addFavorite(artist) {
+        console.log('click')
+        fetch(baseURL + '/favorites', {
+            method: 'POST',
+            body: JSON.stringify({
+                name: artist.name,
+                image: artist.images[0].url
+            }),
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        })
+    }
+
     render() {
         return (
+
             <div className='artistsPage'>
+                 <div>
+                {this.state.artists.map(artist => {
+                    return (
+                        <h2 onClick={() => this.addFavorite(artist)}>{artist.name}</h2>
+                    )
+                })}
+                </div>
                 <Navbar currentPage='favoriteArtists'/>
                 <div className='likedAndRecommended'>
-                    <Liked likedArtists={ likedArtists }/>
-                    <Recommended recommendedArtists = { recommendedArtists }/>
+                    <Liked likedArtists={ this.state.favorites }/>
+                    <Recommended recommendedArtists = { this.state.artists }/>
                 </div>
-                
             </div>
         )
     }
