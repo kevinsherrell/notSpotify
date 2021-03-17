@@ -16,6 +16,7 @@ let refreshToken = '';
 
 // middleware
 app.use(morgan('dev')); // Morgan is for server logging
+app.use(express.json())
 
 
 // mongoose connection

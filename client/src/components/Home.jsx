@@ -51,7 +51,6 @@ class Home extends Component {
 
     
     addFavorite(artist) {
-        
         fetch(baseURL + '/favorites', {
             method: 'POST',
             body: JSON.stringify({
@@ -61,6 +60,13 @@ class Home extends Component {
             headers: {
                 'Content-Type' : 'application/json'
             }
+        }).then(res => res.json())
+        .then(resJson => {
+            const copyFavorites = [...this.state.favorites]
+            copyFavorites.push(resJson)
+            this.setState({
+                favorites : copyFavorites
+            })
         })
     }
 
