@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Navbar from './Navbar';
+import Liked from './Liked';
+import Recommended from './Recommended';
 
 let baseURL = ''
 
@@ -7,6 +10,9 @@ if (process.env.NODE_ENV === 'development') {
   } else {
     baseURL = 'your heroku backend url here'
   }
+
+const likedArtists = []; //Placeholders, eventually to be replaced by backend
+const recommendedArtists = [];
 
 class Home extends Component {
     constructor(props){
@@ -45,6 +51,7 @@ class Home extends Component {
 
     
     addFavorite(artist) {
+        console.log('click')
         fetch(baseURL + '/favorites', {
             method: 'POST',
             body: JSON.stringify({
@@ -59,12 +66,20 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
+
+            <div className='artistsPage'>
+                 <div>
                 {this.state.artists.map(artist => {
                     return (
                         <h2 onClick={() => this.addFavorite(artist)}>{artist.name}</h2>
                     )
                 })}
+                </div>
+                <Navbar currentPage='favoriteArtists'/>
+                <div className='likedAndRecommended'>
+                    <Liked likedArtists={ this.state.favorites }/>
+                    <Recommended recommendedArtists = { this.state.artists }/>
+                </div>
             </div>
         )
     }
