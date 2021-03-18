@@ -74,7 +74,7 @@ class Home extends Component {
             method: 'DELETE'
         }).then( res => {
             const copyFavorites = [...this.state.favorites];
-            const findIndex = this.state.favorites.findIndex(favorite => favorite._id = artist._id)
+            const findIndex = this.state.favorites.findIndex(favorite => favorite._id === artist._id)
             copyFavorites.splice(findIndex, 1)
             this.setState({ favorites : copyFavorites})
         })
