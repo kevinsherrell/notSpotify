@@ -6,7 +6,7 @@ NotSpotify is a simple CRUD app built using a MERN stack and the Spotify API.  I
 
 ## Technologies Used:
 
-Express | cors | React | axios | Mongoose
+Express | cors | React | axios | Mongoose | node
 
 ## User Story:
 
