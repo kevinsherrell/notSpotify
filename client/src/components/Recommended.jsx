@@ -11,7 +11,7 @@ class Recommended extends Component {
                     {
                         this.props.recommendedArtists.map( (artist, key) => {
                             return(
-                                <Artist artist={ artist } index= { key } />
+                                <Artist artist={ artist } index= { key } type={'recommended'} addFavorite={ this.props.addFavorite }/>
                             )
                         }
                     )}

@@ -19,7 +19,22 @@ nav {
 
 .artistsPage{
   display: flex;
+}
 
+.artistBlock{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.artistItem {
+  text-align: center;
+  margin-right: 95px;
+}
+
+.artistImage {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
 }
 
 .emptyLikes {
