@@ -11,9 +11,6 @@ if (process.env.NODE_ENV === 'development') {
     baseURL = 'your heroku backend url here'
   }
 
-const likedArtists = []; //Placeholders, eventually to be replaced by backend
-const recommendedArtists = [];
-
 class Home extends Component {
     constructor(props){
     super(props)
@@ -64,6 +61,7 @@ class Home extends Component {
         .then(resJson => {
             const copyFavorites = [...this.state.favorites]
             copyFavorites.push(resJson)
+            console.log(copyFavorites);
             this.setState({
                 favorites : copyFavorites
             })
@@ -75,16 +73,12 @@ class Home extends Component {
 
             <div className='artistsPage'>
                  <div>
-                {this.state.artists.map(artist => {
-                    return (
-                        <h2 onClick={() => this.addFavorite(artist)}>{artist.name}</h2>
-                    )
-                })}
+                
                 </div>
                 <Navbar currentPage='favoriteArtists'/>
                 <div className='likedAndRecommended'>
                     <Liked likedArtists={ this.state.favorites }/>
-                    <Recommended recommendedArtists = { this.state.artists }/>
+                    <Recommended recommendedArtists = { this.state.artists } addFavorite={ this.addFavorite }/>
                 </div>
             </div>
         )
