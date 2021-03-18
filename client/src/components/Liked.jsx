@@ -13,7 +13,7 @@ class Liked extends Component {
                     {
                         this.props.likedArtists.map( (artist, key) => {
                             return(
-                                <Artist artist={ artist } index= { key } />
+                                <Artist artist={ artist } index= { key } deleteFavorite= { this.props.deleteFavorite }/>
                             )
                         }
                     )}

@@ -22,6 +22,7 @@ class Home extends Component {
     this.getOAuth = this.getOAuth.bind(this)
     this.getSpot = this.getSpot.bind(this)
     this.addFavorite = this.addFavorite.bind(this)
+    this.deleteFavorite = this.deleteFavorite.bind(this)
 }
 
     componentDidMount() {
@@ -68,6 +69,17 @@ class Home extends Component {
         })
     }
 
+    deleteFavorite(artist) {
+        fetch(baseURL + '/favorites/' + artist._id, {
+            method: 'DELETE'
+        }).then( res => {
+            const copyFavorites = [...this.state.favorites];
+            const findIndex = this.state.favorites.findIndex(favorite => favorite._id = artist._id)
+            copyFavorites.splice(findIndex, 1)
+            this.setState({ favorites : copyFavorites})
+        })
+    }
+
     render() {
         return (
 
@@ -77,7 +89,7 @@ class Home extends Component {
                 </div>
                 <Navbar currentPage='favoriteArtists'/>
                 <div className='likedAndRecommended'>
-                    <Liked likedArtists={ this.state.favorites }/>
+                    <Liked likedArtists={ this.state.favorites } deleteFavorite={this.deleteFavorite}/>
                     <Recommended recommendedArtists = { this.state.artists } addFavorite={ this.addFavorite }/>
                 </div>
             </div>
