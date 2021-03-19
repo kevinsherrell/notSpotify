@@ -3,7 +3,7 @@ import WindowOpener from './WindowOpener';
 
 const my_client_id = '39c7c593c7fc4e51873b1705c7c9a6b7' //Store this in an .env
 var scopes = 'user-read-private user-read-email';
-const redirect_uri = 'http://localhost:3000/loginCallback' //Needs if else for heroku
+const redirect_uri = 'https://murmuring-basin-75117.herokuapp.com/loginCallback' //Needs if else for heroku
 const spotifyUrl = ('https://accounts.spotify.com/authorize' +
 '?response_type=code' +
 '&client_id=' + my_client_id +
