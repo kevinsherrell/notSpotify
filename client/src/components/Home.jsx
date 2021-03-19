@@ -49,7 +49,7 @@ class Home extends Component {
 
     
     addFavorite(artist) {
-        fetch(baseURL + '/favorites', {
+        fetch(baseURL + '/favorites/', {
             method: 'POST',
             body: JSON.stringify({
                 name: artist.name,

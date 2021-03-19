@@ -44,14 +44,13 @@ mongoose.connection.once('open', ()=> {
 
 
 //controllers
-const favoritesController = require('./controllers/favoritescont.js')
-app.use('/favorites', favoritesController)
-
+const favoritesController = require('./controllers/favoritescont.js');
+app.use('/favorites', favoritesController);
 
 //auth Routes
 app.get('/getOAuth', (req, res) => {
     res.status(200).json(OAuthToken)
-})
+});
 
 app.get('/getToken/:code', (req, res) => {
     mainOauthCode = req.params.code;
