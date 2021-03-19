@@ -26,6 +26,12 @@ nav {
   flex-wrap: wrap;
 }
 
+.loginPage{
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+
 .artistItem {
   text-align: center;
   margin-right: 95px;
