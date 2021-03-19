@@ -51,7 +51,6 @@ class Home extends Component {
     addFavorite(artist) {
         fetch(baseURL + '/favorites/', {
             method: 'POST',
-            mode: 'no-cors',
             body: JSON.stringify({
                 name: artist.name,
                 image: artist.images[0].url
@@ -73,7 +72,6 @@ class Home extends Component {
     deleteFavorite(artist) {
         fetch(baseURL + '/favorites/' + artist._id, {
             method: 'DELETE',
-            mode: 'no-cors',
         }).then( res => {
             const copyFavorites = [...this.state.favorites];
             const findIndex = this.state.favorites.findIndex(favorite => favorite._id === artist._id)
