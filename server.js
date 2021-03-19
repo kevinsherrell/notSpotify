@@ -22,7 +22,8 @@ app.use(express.json())
 
 
 // mongoose connection
-mongoose.connect(`mongodb://localhost:27017/favorites`, { useNewUrlParser : true })
+MONGODB = process.env.MONGODB || `mongodb://localhost:27017/favorites`;
+mongoose.connect(MONGODB, { useNewUrlParser : true })
 mongoose.connection.once('open', ()=> {
     console.log('connected to mongoose')
 })
