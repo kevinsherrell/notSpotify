@@ -28,7 +28,7 @@ class Login extends Component {
 
     render() {
         return(
-            <div>
+            <div className='loginPage'>
                 <h1>Login to Spotify</h1>
                 {!this.state.loggedIn ?
                     <WindowOpener
@@ -38,7 +38,7 @@ class Login extends Component {
                         Login
                     </WindowOpener>
                     :
-                    <a href='/home'>Homepage</a>
+                    <a href='/home'><button>Homepage</button></a>
                 }
             </div>
         )
