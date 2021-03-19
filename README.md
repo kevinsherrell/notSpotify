@@ -2,6 +2,8 @@
 
 ![NotSpotify Logo](./NotSpotify.png)
 
+https://murmuring-basin-75117.herokuapp.com/login
+
 NotSpotify is a simple CRUD app built using a MERN stack and the Spotify API.  It is a collaboration between Kevin Sherrell, Kole Deighan, Jared Kohou, and Jacob Greenberg.
 
 ## Technologies Used:
@@ -19,3 +21,5 @@ Integrate a user model on the NotSpotify backend to provide a individualized exp
 Take full advantage of the robust Spotify API to allow access to more content such as tracks and playlists.
 
 Use the Spotify SDK to enable playback.
+
+
