@@ -6,7 +6,7 @@ class LoginCallback extends Component {
     componentDidMount() {
         const OauthCode = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).code
         
-        fetch('http://localhost:3003/getToken/' + OauthCode)
+        fetch('https://murmuring-basin-75117.herokuapp.com/getToken/' + OauthCode)
             .then(() => {
                 window.close();
             })

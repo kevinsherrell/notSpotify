@@ -8,7 +8,7 @@ let baseURL = ''
 if (process.env.NODE_ENV === 'development') {
     baseURL = 'http://localhost:3003'
   } else {
-    baseURL = '/'
+    baseURL = 'https://murmuring-basin-75117.herokuapp.com'
   }
 
 class Home extends Component {
