@@ -29,8 +29,6 @@ mongoose.connection.once('open', ()=> {
 })
 
 
-
-Cors
 const whitelist = ['http://localhost:3000', 'https://murmuring-basin-75117.herokuapp.com/', 'https://murmuring-basin-75117.herokuapp.com/home']
 const corsOptions = {
     origin: function (origin, callback) {
